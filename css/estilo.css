@@ -1,0 +1,11 @@
+.infobar, .sidebar, .chartbar {padding: 8px}
+
+.infobar {
+			}
+.sidebar {
+background-color: #82B1FF
+}
+
+.chartbar{
+background-color: #B9F6CA
+}
