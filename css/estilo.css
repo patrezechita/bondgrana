@@ -1,19 +1,5 @@
 .infobar, .sidebar, .chartbar {padding: 8px}
 
-<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css" />
-
-    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-    <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-
-    <link href="~/Content/Menu.css" rel="stylesheet" />
-    <link href="~/Content/Styles.css" rel="stylesheet" />
-
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script type="text/javascript" src="~/Scripts/bootstrap.js"></script>
-    <link href="~/Content/datepicker.css" rel="stylesheet" media="screen" />
-    <script src="~/Scripts/bootstrap-datepicker.js"></script>
-
 .infobar {
 			}
 .sidebar {
