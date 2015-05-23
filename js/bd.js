@@ -56,7 +56,7 @@ function atualizaListaEntrada(transaction, results) {
     for (i = 0; i < results.rows.length; i++) {
         var row = results.rows.item(i);
 
-        listholder.innerHTML += "<li>" + row.nome + " - " + row.valor + " - " + row.categoria + " - " + row.data;
+        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + row.valor + "</td><td>" + row.categoria + "</td><td>" + row.data + "</td></tr>";
     }
 
 }
