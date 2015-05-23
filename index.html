@@ -97,47 +97,31 @@
        				</button>
            		</div>
 
- <div class="table-responsive">
+
+
+
+<div class="table-responsive">
             <table class="table table-striped">
               <thead>
                 <tr>
-                
-                  <th>Descrição</th>
-                  <th>Categoria</th>
-                  <th>Valor</th>
-
-                  <th>Data</th>
-
-
-                  <!-- nome do lançamento, tipo (despesa ou receita), valor, categoria, descrição, data e recorrência (se ela irá se repetir ou não).-->
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th></th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>Salário</td>
-                  <td><span class="badge">Salário</span></td>
-                  <td>+750,00</td>
-                  <td>01/04/2015</td>
-       
-                </tr>
 
-                <tr>
-                  <td>Compra do Mês</td>
-                  <td><span class="badge">Alimentos</span></td>
-                  <td>-150,00</td>
-                  <td>01/04/2015</td>
-       
-                </tr>
+              <tbody id="listaEntrada">
+              
 
-                                <tr>
-                  <td>Ovos de Páscoa</td>
-                  <td><span class="badge">Alimentos</span></td>
-                  <td>-100,00</td>
-                  <td>03/04/2015</td>
-       
-                </tr>
-			</tbody>
-</table>
+                </tbody>
+
+            </table>
+</div>
+
+
+
 
 
 <!-- VOCE ESTA ENTRANDO NO DESCONHECIDO
@@ -150,9 +134,10 @@
 
 
 
-<h2>AREA DE TESTE</h2>
+<h3>AREA DE TESTE- inserção de entrada</h3>
 
 
+      
 
 <div>
     <p>mete entrada na tabela la</p>
@@ -160,13 +145,17 @@
     <input type="text" id="nome_entrada" />
     <br />
 
+
+    <label>Categoria:</label>
+    <input type="text" id="categoria_entrada" />
+    <br />
+
+
     <label>Valor:</label>
     <input type="text" id="valor_entrada" />
     <br />
     
-    <label>Categoria:</label>
-    <input type="text" id="categoria_entrada" />
-    <br />
+
 
     <label>Data:</label>
     <input type="text" id="data_entrada" />
@@ -180,35 +169,10 @@
 
 
 
-<!--
-<div id="visualizarEntrada">
-     <h3>entradas</h3>
-
-    <ul id="listaEntrada"></ul>
-</div>
--->
 
 
 
 
-<div class="table-responsive">
-            <table class="table table-striped">
-              <thead>
-                <tr>
-                    <th>Descrição</th>
-                    <th>Categoria</th>
-                    <th>Valor</th>
-                    <th>data</th>
-                </tr>
-              </thead>
-
-              <tbody id="listaEntrada">
-              
-
-                </tbody>
-
-            </table>
-</div>
 
 
 
