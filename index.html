@@ -44,8 +44,7 @@
     </head>
     
     <body>
-        <!--<div class="container">-->
-        	<!--<div class="row-fluid">-->
+       
                 <div class="col-md-2 sidebar">
                     <b>BondGrana</b><br />
                     <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
@@ -236,10 +235,186 @@
                     </div>
 
                 </div> <!--colmd6-->
-            <!--</div>--><!--rowbody-->
-        <!--</div>--> <!--container body-->
+  <head>
+    <meta charset="utf-8">
+    <link rel="icon" href="porquinho.gif" type="image/gif" sizes="16x16">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>
+        BondGrana
+    </title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/estilo.css" rel="stylesheet">
+
+<script type="text/javascript" src="js/bd.js"></script>
 
 
+    <script src="js/Chart.js"></script>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->  
+  </head>
+	<body onpageshow="mostraEntrada()">
+		<div class="row-fluid">
+		  <div class="col-md-2 sidebar">
+         <b>BondGrana</b><br />
+        <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
+            Home<br />
+          <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+            Extrato<br />
+          <span class="glyphicon glyphicon-fast-forward" aria-hidden="true"></span>
+            Lançamentos Futuros<br />
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+              Adicionar Categoria<br />
+        <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
+              Categorias <br />
+
+        </div>
+        	<div class="col-md-6 infobar">   
+
+             
+        <form class="form-horizontal" role="form">
+        <div-class="row">
+            <div class="col-lg-4">
+            <label> Descrição: </label>
+            <div class="input-group" id="sizing-addon3">
+              <input type="text" class="form-control" placeholder="Nome da entrada" aria-describedby="sizing-addon3">
+            </div>
+            </div>
+
+            <div class="col-lg-4">
+            <label> Categoria: </label>
+            <div class="input-group" id="sizing-addon3">
+              <input type="text" class="form-control" placeholder="Nome da categoria" aria-describedby="sizing-addon3">
+            </div>
+            </div>
+ 
+            <label>Valor: </label>
+            <div class="input-group" id="sizing-addon3">
+              <span class="input-group-addon">R$</span>
+              <input type="text" class="form-control" aria-describedby="sizing-addon3">
+              <div class="input-group-btn">
+              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Tipo <span class="caret"></span></button>
+              <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              <li><a href="#">Receita</a></li>
+              <li><a href="#">Despesa</a></li>
+              </ul>
+            </div><!-- /btn-group -->
+            </div><!-- /input-group -->
+            
+
+            
+            <label>Data: </label>
+            <div class="input-group" id="sizing-addon3">
+              <input type="date" class="form-control" aria-describedby="sizing-addon3">
+
+        </div>
+        </form>
+              
+                <div class="row-fluid">
+          			<button type="button" class="btn btn-default btn-lg">
+       				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+       				</button>
+       				Janeiro
+        			<button type="button" class="btn btn-default btn-lg">
+       				<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
+       				</button>
+           		</div>
+
+
+
+
+<div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                    <th>Descrição</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Data</th>
+                    <th></th>
+                </tr>
+              </thead>
+
+              <tbody id="listaEntrada">
+              
+
+                </tbody>
+
+            </table>
+</div>
+
+
+
+
+
+<!-- VOCE ESTA ENTRANDO NO DESCONHECIDO
+      ESSA PARTE DO CODIGO É PATREZIANA
+      ENTAO TEM MUITO BUG E É DIFICIL DE ENTENDER AINDA
+
+      CUIDADO
+
+      --> 
+
+
+
+<h3>AREA DE TESTE- inserção de entrada</h3>
+
+
+      
+
+<div>
+    <p>mete entrada na tabela la</p>
+    <label>Nome:</label>
+    <input type="text" id="nome_entrada" />
+    <br />
+
+
+    <label>Categoria:</label>
+    <input type="text" id="categoria_entrada" />
+    <br />
+
+
+    <label>Valor:</label>
+    <input type="text" id="valor_entrada" />
+    <br />
+    
+
+
+    <button type="button" id="adicionaentrada" onclick="adicionaEntrada();">mete entrada</button>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <!-- FIM DA AREA PATREZIANA -->
+
+</div>
+        </div>
+      
         <div class="col-md-4 chartbar"><div id="canvas-holder">
 			<canvas id="chart-area" height="100%"/>
 		</div>
