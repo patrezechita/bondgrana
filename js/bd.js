@@ -56,12 +56,7 @@ function atualizaListaEntrada(transaction, results) {
     for (i = 0; i < results.rows.length; i++) {
         var row = results.rows.item(i);
 
-        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge'>"+ row.categoria +"</span>" + "</td><td>" 
-        + row.valor + "</td><td>" + row.data + "</td><td>"
-        + 
-
-
-    " <span class='glyphicon glyphicon-remove-circle' aria-hidden='true' style='color:red' onclick='deletaEntrada(" + row.id + ");'></span>" + "</td></tr>";
+        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + row.valor + "</td><td>" + row.categoria + "</td><td>" + row.data + "</td></tr>";
     }
 
 }
@@ -113,19 +108,7 @@ function adicionaEntrada() {
 
 
 
-//function to remove a car from the database, passed the row id as it's only parameter
 
-function deletaEntrada(id) {
-    //check to ensure the mydb object has been created
-    if (meubd) {
-        //Get all the cars from the database with a select statement, set outputCarList as the callback function for the executeSql command
-        meubd.transaction(function (t) {
-            t.executeSql("DELETE FROM entrada WHERE id=?", [id], mostraEntrada);
-        });
-    } else {
-        alert("deu merda");
-    }
-}
 
 
 
