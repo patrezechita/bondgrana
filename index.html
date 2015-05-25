@@ -79,7 +79,7 @@
                                     <div class="form-group">
                                         <label for="inputDescription" class="col-md-4 control-label">Descrição:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="inputDescription" placeholder="Nome da Entrada">
+                                            <input type="text" class="form-control" id="nome_entrada" placeholder="Nome da Entrada">
                                         </div>
                                     </div>
                                 </div>
@@ -88,7 +88,7 @@
                                     <div class="form-group">
                                         <label for="inputCategory" class="col-md-4 control-label">Categoria:</label>
                                         <div class="col-md-8">
-                                            <input type="text" class="form-control" id="inputCategory" placeholder="Nome da Categoria">
+                                            <input type="text" class="form-control" id="categoria_entrada" placeholder="Nome da Categoria">
                                         </div>
                                     </div>
                                 </div>
@@ -101,7 +101,7 @@
                                         <div class="col-md-8">
                                             <div class="input-group">
                                                 <span class="input-group-addon">R$</span>
-                                                <input type="number" class="form-control" id="inputValue" placeholder="Valor da entrada">
+                                                <input type="number" class="form-control" id="valor_entrada" placeholder="Valor da entrada">
                                             </div>
                                         </div>
                                     </div>
@@ -111,7 +111,7 @@
                                     <div class="form-group">
                                         <label for="inputData" class="col-md-4 control-label">Data:</label>
                                         <div class="col-md-8">
-                                            <input type="date" class="form-control" id="inputData">
+                                            <input type="date" class="form-control" id="data_entrada">
                                         </div>
                                     </div>
                                 </div>
@@ -138,10 +138,10 @@
                                 <div class="col-sm-16 col-lg-12">
                                     <div class="btn-group btn-group-justified" role="group" aria-label="...">
                                         <div class="btn-group btn-group-lg" role="group">
-                                            <button type="button" class="btn btn-danger">Adicionar Entrada</button>
+                                            <button type="button" class="btn btn-danger" onclick="adicionaEntrada();">Adicionar Entrada</button>
                                         </div>
                                         <div class="btn-group btn-group-lg" role="group">
-                                            <button type="button" class="btn btn-sucess">Adicionar Receita</button>
+                                            <button type="button" class="btn btn-success">Não adianta clicar aqui</button>
                                         </div>
                                     </div>
                                 </div>
@@ -189,65 +189,6 @@
 
 
 
-
-<!-- VOCE ESTA ENTRANDO NO DESCONHECIDO
-      ESSA PARTE DO CODIGO É PATREZIANA
-      ENTAO TEM MUITO BUG E É DIFICIL DE ENTENDER AINDA
-
-      CUIDADO
-
-      --> 
-
-
-
-<h3>AREA DE TESTE- inserção de entrada</h3>
-
-
-      
-
-<div>
-    <p>mete entrada na tabela la</p>
-    <label>Nome:</label>
-    <input type="text" id="nome_entrada" />
-    <br />
-
-
-    <label>Categoria:</label>
-    <input type="text" id="categoria_entrada" />
-    <br />
-
-
-    <label>Valor:</label>
-    <input type="text" id="valor_entrada" />
-    <br />
-    
-
-
-    <label>Data:</label>
-    <input type="text" id="data_entrada" />
-    <br />
-
-
-
-    <button type="button" id="adicionaentrada" onclick="adicionaEntrada();">mete entrada</button>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!-- FIM DA AREA PATREZIANA -->
 
 </div>
         </div>

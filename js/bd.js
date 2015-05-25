@@ -115,7 +115,7 @@ function adicionaEntrada() {
                 mostraEntrada();
             });
         } else {
-            alert("deu merda");
+            alert("coloca os valor seu pau no cu");
         }
     } else {
         alert("deu merda");
