@@ -56,12 +56,24 @@ function atualizaListaEntrada(transaction, results) {
     for (i = 0; i < results.rows.length; i++) {
         var row = results.rows.item(i);
 
-        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge'>"+ row.categoria +"</span>" + "</td><td>" 
+        if(row.valor < 0){
+        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge progress-bar-danger'>"+ row.categoria +"</span>" + "</td><td>" 
         + row.valor + "</td><td>" + row.data + "</td><td>"
         + 
 
 
     " <span class='glyphicon glyphicon-remove-circle' aria-hidden='true' style='color:red' onclick='deletaEntrada(" + row.id + ");'></span>" + "</td></tr>";
+        }
+else {
+
+        listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge progress-bar-success'>"+ row.categoria +"</span>" + "</td><td>" 
+        + row.valor + "</td><td>" + row.data + "</td><td>"
+        + 
+
+
+    " <span class='glyphicon glyphicon-remove-circle' aria-hidden='true' style='color:red' onclick='deletaEntrada(" + row.id + ");'></span>" + "</td></tr>";
+    
+}
     }
 
 }
