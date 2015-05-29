@@ -8,7 +8,7 @@ if (window.openDatabase)
     	var meubd = openDatabase("bondgrana_db", "0.1", "Banco de Dados Local do BondGrana", 1024 * 1024);
 
     	meubd.transaction(function (t) {
-        	t.executeSql("CREATE TABLE IF NOT EXISTS entrada (id INTEGER PRIMARY KEY ASC, nome TEXT, valor FLOAT, categoria TEXT, data DATE)");
+        	t.executeSql("CREATE TABLE IF NOT EXISTS entrada (id INTEGER PRIMARY KEY ASC, nome TEXT, valor FLOAT, categoria TEXT, data TEXT)");
     	});
 	}
 else
@@ -18,19 +18,49 @@ else
 
 
 
+var monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+// va
+var dataAtual = new Date();
+var mesAtual = dataAtual.getMonth();
+var nomeMesAtual = monthNames[mesAtual];
+var anoAtual = dataAtual.getFullYear();
 
 
 
 
+//document.getElementById("demo").innerHTML = mesAtual;
+function mostraMes() {
+    var visualizaMes = document.getElementById("visualizaMes");
+    visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
+}
 
+function inicializaFuncoes() {
+    mostraEntrada();
+    mostraMes();
+}
 
+function adiantaMes() {
+    mesAtual = (mesAtual + 1) % 12;
+    if(mesAtual == 0) {
+        anoAtual ++;
+    }
+    nomeMesAtual = monthNames[mesAtual];
+    var visualizaMes = document.getElementById("visualizaMes");
+    visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
+}
 
-
-
-
-
-
-
+function atrasaMes() {
+    mesAtual = (mesAtual - 1);
+    if(mesAtual < 0){
+        mesAtual = 11;
+    }
+    if(mesAtual == 0) {
+        anoAtual --;
+    }
+    nomeMesAtual = monthNames[mesAtual];
+    var visualizaMes = document.getElementById("visualizaMes");
+    visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
+}
 
 
 function mostraEntrada() {
