@@ -18,11 +18,12 @@ else
 
 
 
-var monthNames = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+var nomeMes = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+var nomeMesBD = ["%-01-%", "%-02-%", "%-03-%", "%-04-%", "%-05-%", "%-06-%", "%-07-%", "%-08-%", "%-09-%", "%-10-%", "%-11-%", "%-12-%"];
 // va
 var dataAtual = new Date();
 var mesAtual = dataAtual.getMonth();
-var nomeMesAtual = monthNames[mesAtual];
+var nomeMesAtual = nomeMes[mesAtual];
 var anoAtual = dataAtual.getFullYear();
 
 
@@ -30,6 +31,11 @@ var anoAtual = dataAtual.getFullYear();
 
 //document.getElementById("demo").innerHTML = mesAtual;
 function mostraMes() {
+
+
+
+
+
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
 }
@@ -44,9 +50,10 @@ function adiantaMes() {
     if(mesAtual == 0) {
         anoAtual ++;
     }
-    nomeMesAtual = monthNames[mesAtual];
+    nomeMesAtual = nomeMes[mesAtual];
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
+    mostraEntrada();
 }
 
 function atrasaMes() {
@@ -57,16 +64,20 @@ function atrasaMes() {
     if(mesAtual == 0) {
         anoAtual --;
     }
-    nomeMesAtual = monthNames[mesAtual];
+    nomeMesAtual = nomeMes[mesAtual];
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
+    mostraEntrada();
 }
 
 
 function mostraEntrada() {
     if (meubd) {
+        var mostraMesEntrada = nomeMesBD[mesAtual];
+            var mostraAnoEntrada = anoAtual.toString();
+    mostraAnoEntrada = mostraAnoEntrada.concat("%");
         meubd.transaction(function (t) {
-            t.executeSql("SELECT * FROM entrada", [], atualizaListaEntrada);
+            t.executeSql("SELECT * FROM entrada WHERE data LIKE ? AND data LIKE ?", [mostraMesEntrada, mostraAnoEntrada], atualizaListaEntrada);
         });
     } else {
         alert("deu merda");
