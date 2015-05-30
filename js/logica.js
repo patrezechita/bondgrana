@@ -57,13 +57,14 @@ function adiantaMes() {
 }
 
 function atrasaMes() {
-    mesAtual = (mesAtual - 1);
-    if(mesAtual < 0){
+    if(mesAtual == 0){
         mesAtual = 11;
-    }
-    if(mesAtual == 0) {
         anoAtual --;
     }
+    else{
+        mesAtual --;
+    }
+
     nomeMesAtual = nomeMes[mesAtual];
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
@@ -77,7 +78,7 @@ function mostraEntrada() {
             var mostraAnoEntrada = anoAtual.toString();
     mostraAnoEntrada = mostraAnoEntrada.concat("%");
         meubd.transaction(function (t) {
-            t.executeSql("SELECT * FROM entrada WHERE data LIKE ? AND data LIKE ?", [mostraMesEntrada, mostraAnoEntrada], atualizaListaEntrada);
+            t.executeSql("SELECT * FROM entrada WHERE data LIKE ? AND data LIKE ? ORDER BY data DESC", [mostraMesEntrada, mostraAnoEntrada], atualizaListaEntrada);
         });
     } else {
         alert("deu merda");
