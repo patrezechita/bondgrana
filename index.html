@@ -178,39 +178,28 @@
                     </button>
 
 
+                                        <button id="buttonADD" class="btn btn-default btn-sm">
+                    ADICIONA GRAFICO
+                    </button>
+
+<div >
+     <h3>lista de teste das categorias despesas</h3>
+
+    <ul id="listadeteste"></ul>
+</div>
 
 </div>
         </div>
       
         <div class="col-md-4 chartbar"><div id="canvas-holder">
-			<canvas id="chart-area" height="100%"/>
+			
 		</div>
-		<script>
-
-		var doughnutData = [
-				{
-					value: 750,
-					color:"#4CAF50",
-					highlight: "#00C853",
-					label: "Salário"
-				},
-				{
-					value: 250,
-					color: "#46BFBD",
-					highlight: "#5AD3D1",
-					label: "Alimentos"
-				}
-
-			];
-
-			window.onload = function(){
-				var ctx = document.getElementById("chart-area").getContext("2d");
-				window.myDoughnut = new Chart(ctx).Doughnut(doughnutData, {responsive : true});
-			};
 
 
+    <script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
 
-	</script>
+<div id="container" style="min-width: 310px; height: 400px; max-width: 600px; margin: 0 auto"></div>
 		</div>
       </div>
 

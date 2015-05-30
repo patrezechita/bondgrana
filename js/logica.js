@@ -43,6 +43,8 @@ function mostraMes() {
 function inicializaFuncoes() {
     mostraEntrada();
     mostraMes();
+mostraCategoria();
+desenhaGrafico();
 }
 
 function adiantaMes() {
@@ -54,6 +56,8 @@ function adiantaMes() {
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
     mostraEntrada();
+                    mostraCategoria();
+                desenhaGrafico();
 }
 
 function atrasaMes() {
@@ -69,6 +73,8 @@ function atrasaMes() {
     var visualizaMes = document.getElementById("visualizaMes");
     visualizaMes.innerHTML = nomeMesAtual + " - " + anoAtual;
     mostraEntrada();
+                    mostraCategoria();
+                desenhaGrafico();
 }
 
 
@@ -139,6 +145,109 @@ else {
 
 
 
+function atualizaListaCategoria(transaction, results) {
+
+    var listitems = "";
+
+    var listholder = document.getElementById("listadeteste");
+
+
+    listholder.innerHTML = "";
+
+    var i;
+
+    for (i = 0; i < results.rows.length; i++) {
+
+        var row = results.rows.item(i);
+
+        listholder.innerHTML += "<li>" + row.categoria + row.total + "</li>";
+
+
+        row.total = Math.abs(row.total);
+        var chart = $('#container').highcharts();
+        chart.series[0].addPoint([row.categoria, row.total]);
+
+
+    }
+
+}
+
+
+
+function mostraCategoria() {
+    var mostraMesEntrada = nomeMesBD[mesAtual];
+
+    if (meubd) {
+       
+        meubd.transaction(function (t) {
+            t.executeSql("SELECT categoria, SUM(valor) as total FROM entrada WHERE valor < 0 AND data LIKE ? GROUP BY categoria", [mostraMesEntrada], atualizaListaCategoria);
+        });
+    } else {
+        alert("deu uma merda violente");
+    }
+}
+
+
+
+
+
+
+
+
+function desenhaGrafico() {
+
+
+
+$(function () {
+        // Build the chart
+        $('#container').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            },
+            title: {
+                text: 'Gastos por categoriass'
+            },
+             credits: {
+    enabled: false
+  },
+  exporting: {
+         enabled: false
+},
+
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.y:.1f}</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: false
+                    },
+                    showInLegend: true
+                }
+            },
+            series: [{
+                type: 'pie',
+                name: 'Valor',
+                data: []
+            }]
+        });
+
+
+
+});
+
+
+
+}
+
+
+
+
+
 
 function adicionaEntrada() {
 
@@ -155,6 +264,8 @@ function adicionaEntrada() {
             meubd.transaction(function (t) {
                 t.executeSql("INSERT INTO entrada (nome, valor, categoria, data) VALUES (?, ?, ?, ?)", [nome, valor, categoria, data]);
                 mostraEntrada();
+                mostraCategoria();
+                desenhaGrafico();
             });
         } else {
             alert("coloca os valor seu pau no cu");
