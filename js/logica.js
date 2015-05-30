@@ -167,12 +167,12 @@ function adicionaEntrada() {
 
 
 
-//function to remove a car from the database, passed the row id as it's only parameter
+
 
 function deletaEntrada(id) {
-    //check to ensure the mydb object has been created
+
     if (meubd) {
-        //Get all the cars from the database with a select statement, set outputCarList as the callback function for the executeSql command
+
         meubd.transaction(function (t) {
             t.executeSql("DELETE FROM entrada WHERE id=?", [id], mostraEntrada);
         });
@@ -182,7 +182,17 @@ function deletaEntrada(id) {
 }
 
 
+function limpaBancoDeDados(id) {
 
+    if (meubd) {
+
+        meubd.transaction(function (t) {
+            t.executeSql("DELETE FROM entrada", [], mostraEntrada);
+        });
+    } else {
+        alert("deu merda");
+    }
+}
 
 
 
