@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: http://patrezechita.github.io/bondgrana/js/sitemap.xml
