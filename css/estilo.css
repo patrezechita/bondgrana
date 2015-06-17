@@ -23,3 +23,7 @@ background-color: #82B1FF
 .chartbar{
 background-color: #FFFFFF
 }
+
+h1 {
+    display: inline;
+}

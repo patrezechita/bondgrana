@@ -149,10 +149,7 @@ function atualizaListaCategoria(transaction, results) {
 
     var listitems = "";
 
-    var listholder = document.getElementById("listadeteste");
 
-
-    listholder.innerHTML = "";
 
     var i;
 
@@ -160,7 +157,7 @@ function atualizaListaCategoria(transaction, results) {
 
         var row = results.rows.item(i);
 
-        listholder.innerHTML += "<li>" + row.categoria + row.total + "</li>";
+     
 
 
         row.total = Math.abs(row.total);
@@ -176,11 +173,14 @@ function atualizaListaCategoria(transaction, results) {
 
 function mostraCategoria() {
     var mostraMesEntrada = nomeMesBD[mesAtual];
+                var mostraAnoEntrada = anoAtual.toString();
+    mostraAnoEntrada = mostraAnoEntrada.concat("%");
+
 
     if (meubd) {
        
         meubd.transaction(function (t) {
-            t.executeSql("SELECT categoria, SUM(valor) as total FROM entrada WHERE valor < 0 AND data LIKE ? GROUP BY categoria", [mostraMesEntrada], atualizaListaCategoria);
+            t.executeSql("SELECT categoria, SUM(valor) as total FROM entrada WHERE valor < 0 AND data LIKE ? AND data LIKE ? GROUP BY categoria", [mostraMesEntrada, mostraAnoEntrada], atualizaListaCategoria);
         });
     } else {
         alert("deu uma merda violente");
@@ -207,7 +207,7 @@ $(function () {
                 plotShadow: false
             },
             title: {
-                text: 'Gastos por categoriass'
+                text: 'Gastos por Categorias'
             },
              credits: {
     enabled: false
@@ -249,7 +249,10 @@ $(function () {
 
 
 
-function adicionaEntrada() {
+function adicionaEntrada(opcao) {
+
+
+    
 
     if (meubd) {
       
@@ -257,6 +260,13 @@ function adicionaEntrada() {
         var valor = document.getElementById("valor_entrada").value;
         var categoria = document.getElementById("categoria_entrada").value;
         var data = document.getElementById("data_entrada").value;
+
+        if(opcao == 0 && valor >= 0)
+                valor = valor * -1;
+
+        if(opcao == 1 && valor < 0)
+                alert("Não é possível adicionar um valor negativo a uma receita!")
+            else{
 
 
         if (nome !== "" && valor !== "" && categoria !== "" && data !== "") {
@@ -268,12 +278,15 @@ function adicionaEntrada() {
                 desenhaGrafico();
             });
         } else {
-            alert("coloca os valor seu pau no cu");
+            alert("Insira todos os valores antes de adicionar uma entrada.");
         }
+    }
     } else {
-        alert("deu merda");
+        alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
     }
 }
+
+
 
 
 
@@ -299,6 +312,9 @@ function limpaBancoDeDados(id) {
 
         meubd.transaction(function (t) {
             t.executeSql("DELETE FROM entrada", [], mostraEntrada);
+            mostraEntrada();
+            mostraCategoria();
+            desenhaGrafico();
         });
     } else {
         alert("deu merda");
