@@ -17,7 +17,8 @@
 .infobar {
 			}
 .sidebar {
-background-color: #82B1FF
+	height: 100%;
+background-color: #BBDEFB
 }
 
 .chartbar{

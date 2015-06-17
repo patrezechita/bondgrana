@@ -299,6 +299,9 @@ function deletaEntrada(id) {
 
         meubd.transaction(function (t) {
             t.executeSql("DELETE FROM entrada WHERE id=?", [id], mostraEntrada);
+                        mostraEntrada();
+            mostraCategoria();
+            desenhaGrafico();
         });
     } else {
         alert("deu merda");
