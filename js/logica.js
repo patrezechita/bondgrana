@@ -45,6 +45,7 @@ function inicializaFuncoes() {
     mostraMes();
 mostraCategoria();
 desenhaGrafico();
+mostraSaldo();
 }
 
 function adiantaMes() {
@@ -58,6 +59,7 @@ function adiantaMes() {
     mostraEntrada();
                     mostraCategoria();
                 desenhaGrafico();
+                mostraSaldo();
 }
 
 function atrasaMes() {
@@ -75,6 +77,7 @@ function atrasaMes() {
     mostraEntrada();
                     mostraCategoria();
                 desenhaGrafico();
+                mostraSaldo();
 }
 
 
@@ -106,7 +109,7 @@ function atualizaListaEntrada(transaction, results) {
 
         if(row.valor < 0){
         listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge progress-bar-danger'>"+ row.categoria +"</span>" + "</td><td>" 
-        + row.valor + "</td><td>" + row.data + "</td><td>"
+        + "R$ " + row.valor + "</td><td>" + row.data + "</td><td>"
         + 
 
 
@@ -115,7 +118,7 @@ function atualizaListaEntrada(transaction, results) {
 else {
 
         listholder.innerHTML += "<tr><td>" + row.nome + "</td><td>" + "<span class='badge progress-bar-success'>"+ row.categoria +"</span>" + "</td><td>" 
-        + row.valor + "</td><td>" + row.data + "</td><td>"
+        + "R$ " + row.valor + "</td><td>" + row.data + "</td><td>"
         + 
 
 
@@ -188,10 +191,69 @@ function mostraCategoria() {
 }
 
 
+function mostraSaldo() {
+    var mostraMesEntrada = nomeMesBD[mesAtual];
+                var mostraAnoEntrada = anoAtual.toString();
+    mostraAnoEntrada = mostraAnoEntrada.concat("%");
 
 
+    if (meubd) {
+       
+        meubd.transaction(function (t) {
+            t.executeSql("SELECT SUM(valor) as total FROM entrada WHERE data LIKE ? AND data LIKE ?", [mostraMesEntrada, mostraAnoEntrada], atualizaSaldo);
+        });
+    } else {
+        alert("deu uma merda violente");
+    }
+}
 
 
+function atualizaSaldo(transaction, results) {
+    var listitems = "";
+    var listholder = document.getElementById("divSaldo");
+
+    listholder.innerHTML = "";
+
+    var i;
+    var saldo;
+    
+    for (i = 0; i < results.rows.length; i++) {
+        var row = results.rows.item(i);
+
+        document.getElementById("divSaldo").style.color='#FFFFFF';
+        document.getElementById("divSaldo").style.padding='8px';
+        document.getElementById("divSaldo").style.textAlign='center';
+        document.getElementById("divSaldo").style.fontSize='250%';
+
+        if(row.total == null)
+                document.getElementById("divSaldo").style.backgroundColor='#FFFFFF';
+        else if(row.total > 0)
+                document.getElementById("divSaldo").style.backgroundColor='#5CB85C';
+        
+
+
+                    //color: #00ff00; text-align: right;
+            
+        else
+                document.getElementById("divSaldo").style.backgroundColor='#D9534F';
+      
+        listholder.innerHTML += "Saldo Atual<br />";
+        listholder.innerHTML += "R$ ";
+        saldo = row.total;
+        listholder.innerHTML += saldo.toFixed(2);
+
+         if(row.total =! null){
+                  var listholder2 = document.getElementById("divCategoriaTitulo");
+                      listholder2.innerHTML = "";
+                      document.getElementById("divCategoriaTitulo").style.textAlign='center';
+                  listholder2.innerHTML += "<h3>Despesas por Categoria</h3>";
+         }
+       
+        //parseFloat(document.getElementById(amtid4).innerHTML).toFixed(2);
+
+    }
+
+}
 
 
 function desenhaGrafico() {
@@ -207,7 +269,7 @@ $(function () {
                 plotShadow: false
             },
             title: {
-                text: 'Gastos por Categorias'
+                text: ''
             },
              credits: {
     enabled: false
@@ -276,6 +338,7 @@ function adicionaEntrada(opcao) {
                 mostraEntrada();
                 mostraCategoria();
                 desenhaGrafico();
+                mostraSaldo();
             });
         } else {
             alert("Insira todos os valores antes de adicionar uma entrada.");
@@ -302,6 +365,7 @@ function deletaEntrada(id) {
                         mostraEntrada();
             mostraCategoria();
             desenhaGrafico();
+            mostraSaldo();
         });
     } else {
         alert("deu merda");
@@ -318,6 +382,9 @@ function limpaBancoDeDados(id) {
             mostraEntrada();
             mostraCategoria();
             desenhaGrafico();
+            mostraSaldo();
+                      var listholder2 = document.getElementById("divCategoriaTitulo");
+                      listholder2.innerHTML = "";
         });
     } else {
         alert("deu merda");

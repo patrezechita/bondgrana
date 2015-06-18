@@ -18,11 +18,14 @@
 			}
 .sidebar {
 	height: 100%;
-background-color: #BBDEFB
+background-color: #E3F2FD;
+text-align: center;
 }
 
+
+
 .chartbar{
-background-color: #FFFFFF
+background-color: #FFFFFF;
 }
 
 h1 {

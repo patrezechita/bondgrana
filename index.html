@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<title>BondGrana - Gerenciador de Finanças Pessoais</title>
 
 		<!-- frameworks -->
@@ -44,15 +45,16 @@
 		  <div class="col-md-2 sidebar">
          <h1>BondGrana</h1><br />
    <br/>  
-                    <button type="button" class="btn btn-default btn-sm" onclick="limpaBancoDeDados();">
+                    <button type="button" class="btn btn-default btn-sm center-block" onclick="limpaBancoDeDados();">
                     LIMPA BANCO DE DADOS
-                    </button> <br/> 
+                    </button>
 
-                                     <br/>   <button type="button" class="btn btn-default btn-sm" onclick="povoaBancoDeDados();">
+                                     <br/>   <button type="button" class="btn btn-default btn-sm center-block" onclick="povoaBancoDeDados();">
                     INSERE BANCO DE DADOS
                     </button>
 <br/>
                    <h5> Criado com <span class="glyphicon glyphicon-heart " style="color:red" aria-hidden="true"></span> <br/> Hospedado em <a href="https://github.com/patrezechita/bondgrana/tree/gh-pages">GitHub</a></h5>
+                   <h6>versão 1.0</h6>
         </div>
         <div class="col-md-6 infobar">   
 
@@ -124,6 +126,7 @@
                     <br>
               
                 <div class="row-fluid">
+                 <div class="center-block col-md-8" style="float: none">
           			<button type="button" class="btn btn-default btn-lg" onclick="atrasaMes();" >
        				<span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
        				</button>
@@ -131,6 +134,7 @@
         			<button type="button" class="btn btn-default btn-lg" onclick="adiantaMes();">
        				<span class="glyphicon glyphicon-arrow-right" aria-hidden="true"></span>
        				</button>
+           		</div>
            		</div>
 
 
@@ -167,10 +171,15 @@
         </div>
       
         <div class="col-md-4 chartbar"><div id="canvas-holder">
-			
+			<div id="divSaldo">
+			<h3>Saldo</h3>
+
+				<br />
+
+			</div>
 		</div>
 
-
+<div id='divCategoriaTitulo'></div>
     <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/exporting.js"></script>
 

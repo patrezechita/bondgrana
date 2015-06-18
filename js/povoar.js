@@ -339,6 +339,7 @@ function povoaBancoDeDados() {
             mostraEntrada();
             mostraCategoria();
             desenhaGrafico();
+               mostraSaldo();
         });
 
     } 
