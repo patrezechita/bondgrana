@@ -13,7 +13,7 @@ if (window.openDatabase)
 	}
 else
 	{
-    	alert("deu merda");
+    	alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
 	}
 
 
@@ -90,7 +90,7 @@ function mostraEntrada() {
             t.executeSql("SELECT * FROM entrada WHERE data LIKE ? AND data LIKE ? ORDER BY data DESC", [mostraMesEntrada, mostraAnoEntrada], atualizaListaEntrada);
         });
     } else {
-        alert("deu merda");
+        alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
     }
 }
 
@@ -186,7 +186,7 @@ function mostraCategoria() {
             t.executeSql("SELECT categoria, SUM(valor) as total FROM entrada WHERE valor < 0 AND data LIKE ? AND data LIKE ? GROUP BY categoria", [mostraMesEntrada, mostraAnoEntrada], atualizaListaCategoria);
         });
     } else {
-        alert("deu uma merda violente");
+        alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
     }
 }
 
@@ -203,7 +203,7 @@ function mostraSaldo() {
             t.executeSql("SELECT SUM(valor) as total FROM entrada WHERE data LIKE ? AND data LIKE ?", [mostraMesEntrada, mostraAnoEntrada], atualizaSaldo);
         });
     } else {
-        alert("deu uma merda violente");
+        alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
     }
 }
 
@@ -387,13 +387,6 @@ function limpaBancoDeDados(id) {
                       listholder2.innerHTML = "";
         });
     } else {
-        alert("deu merda");
+        alert("Seu navegador não suporta WEB SQL. Utilize o Google Chrome!");
     }
 }
-
-
-
-
-
-//manda nudes
-mostraEntrada();
